@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Student { 
+public class Student {
 
 	private int id;
 	private String fname;
@@ -88,8 +88,17 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student ID: " + id + "\n" + "First Name: " + fname + "\n" + "Last Name: " + 
+		return "Student ID: " + id + "\n" + "First Name: " + fname + "\n" + "Last Name: " +
 		lname + "\n"+ "Email: " + email + "\n" + "Major: " + major + "\n" + "GPA: " + gpa + "\n" +
 		"Credit Hours: " + hours + "\n" + "House: " + house + "\n";
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if (other instanceof Student) {
+			Student student = (Student) other;
+			return this.id == student.getID();
+		}
+		return false;
 	}
 }
