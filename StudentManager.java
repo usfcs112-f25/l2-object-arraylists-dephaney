@@ -1,3 +1,12 @@
+/**
+ * StudentManager Manages student objects.
+ * Displays options for the user to choose what data to display.
+ * 
+ * @author Dephaney Zhang
+ * @github dephaney
+ * @version java 23.0.2 2025-01-21
+ */
+
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -116,6 +125,12 @@ public class StudentManager {
         input.close();
 	}
 
+	/**
+     * Calculates the average GPA of the students.
+     * 
+     * @param students An arraylist of student objects.
+     * @return A double of the average GPA of the students.
+     */
 	public static double avgGPA(ArrayList<Student> students) {
 		int count = 0;
 		double sum = 0.0;
@@ -126,6 +141,11 @@ public class StudentManager {
 		return sum / count;
 	}
 
+	/**
+     * Displays the number of students in each major.
+     * 
+     * @param students An arraylist of student objects.
+     */
 	public static void displayMajors(ArrayList<Student> students) {
 		HashMap<String, Integer> majors = new HashMap<String, Integer>();
 		String major;
@@ -142,6 +162,11 @@ public class StudentManager {
 		}
 	}
 
+	/**
+     * Displays the studens in honor roll.
+     * 
+     * @param students An arraylist of student objects.
+     */
 	public static void honorRoll(ArrayList<Student> students) {
 		ArrayList<Student> honorRoll = new ArrayList<Student>();
 		for (Student s : students) {
@@ -154,6 +179,12 @@ public class StudentManager {
 		}		
 	}
 
+	/**
+     * Finds and displays the user-specificed student.
+     * 
+     * @param students An arraylist of student objects.
+     * @param student A String of the student to be found.
+     */
 	public static void findStudent(String student, ArrayList<Student> students) {
 		for (Student s : students) {
 			if (s.getFirst().equalsIgnoreCase(student)) {

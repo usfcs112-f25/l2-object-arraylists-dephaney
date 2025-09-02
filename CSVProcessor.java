@@ -1,3 +1,11 @@
+/**
+ * CSVProcessor Reads a given filename and returns information in an Arraylist.
+ * Properly reads a CSV file and stores the data.
+ * 
+ * @author Dephaney Zhang
+ * @github dephaney
+ * @version java 23.0.2 2025-01-21
+ */
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,22 +14,19 @@ import java.io.IOException;
 
 public class CSVProcessor { 
 
+	/**
+     * Reads the CSV and returns data.
+     * @param filename A String with the filename.
+     * @return An ArrayList of the student objects created.
+     */
 	public static ArrayList<Student> readCSV(String filename) {
         BufferedReader reader = null;
         ArrayList<Student> data = new ArrayList<>();
         try {
-            /**
-             * Use if statement for the first line so it only reads the first line, split it, and store it
-             * in the HashMap under a -1 key so it is only accessed when specified, avoids complications of
-             * accidentally calculating String/header data when iterating from 0 to n.
-             */
             reader = new BufferedReader(new FileReader(filename));
             String line = reader.readLine();
             String[] splitLine;
-            /**
-             * While loop splits the line and adds each split section into a column's arraylist
-             * before moving to the next column.
-             */
+
             while ((line = reader.readLine()) != null) {
                 splitLine = line.split(",");
            		Student student = new Student(Integer.valueOf(splitLine[0]), splitLine[1], splitLine[2],
