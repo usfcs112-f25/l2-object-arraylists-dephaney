@@ -20,15 +20,19 @@ public class Student {
 	private int hours;
 	private String house;
 
-	public Student(int id, String fname, String lname, String email, String major, double gpa, int hours, String house) {
-		this.id = id;
-		this.fname = fname;
-		this.lname = lname;
-		this.email = email;
-		this.major = major;
-		this.gpa = gpa;
-		this.hours = hours;
-		this.house = house;
+	public Student(int id, String fname, String lname, String email, String major, double gpa, int hours, String house) throws IllegalArgumentException{
+		if (gpa >= 0.0 && gpa <= 5.0 && hours >= 0) {
+			this.id = id;
+			this.fname = fname;
+			this.lname = lname;
+			this.email = email;
+			this.major = major;
+			this.gpa = gpa;
+			this.hours = hours;
+			this.house = house;
+		} else {
+			throw new IllegalArgumentException("Illegal values inputted.");
+		}
 	}
 
 	/**
