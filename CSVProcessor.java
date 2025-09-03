@@ -42,6 +42,8 @@ public class CSVProcessor {
             return null;
         } catch (NumberFormatException exception) {
         	System.err.println("Error: Student data malformed.");
+		} catch (IllegalArgumentException exception) {
+			System.err.println("Error: Invalid numeric data.");
         } finally {
             if (reader != null) {
                 try {
