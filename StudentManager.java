@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StudentManager {
 
@@ -29,7 +31,8 @@ public class StudentManager {
         	System.out.println("Options:\n[1] View all student information\n[2] View students in a specific house\n" +
         		"[3] View average GPA of all students in a specific house\n[4] Write out average GPA of all students into a file\n" +
         		"[5] Display the number of students in each major\n[6] Display honor roll students\n[7] Search for a student\n" +
-        		"[8] Write out average GPA and honor roll students into a file\n[9] Display students with a higher GPA than specified\n[0] Quit");
+        		"[8] Write out average GPA and honor roll students into a file\n[9] Display students with a higher GPA than specified\n" +
+        		"[10] Sort students based off of first name or GPA\n[0] Quit");
       		System.out.print(">> ");
       		try {
       			choice = input.nextInt();
@@ -116,7 +119,17 @@ public class StudentManager {
 	      			System.out.println("What GPA is the lower cutoff?");
 	      			double gpa = input.nextDouble();
 	      			displayGPA(gpa, students);
-	      		} else {
+	      		} else if (choice == 10) {
+	      			System.out.println("Would you like to sort off of first name or GPA? (Type either \"name\" or \"gpa\"");
+	      			input.nextLine();
+	      			String dec = input.nextLine();
+	      			if (dec.equals("name")) {
+	      				sortName(students);
+	      			} else if (dec.equals("gpa")) {
+	      				sortGPA(students);
+	      			}
+
+	      		}else {
 			        System.out.print("invalid input");
 			        continue;
 	      		}
@@ -200,6 +213,12 @@ public class StudentManager {
 		System.out.println("Student could not be found");
 	}
 
+	/**
+     * Finds and displays the student information for students who have a higher gpa than the given user-specified gpa.
+     * 
+     * @param students An arraylist of student objects.
+     * @param gpa A double of the gpa that is the lower cutoff.
+     */
 	public static void displayGPA(double gpa, ArrayList<Student> students) {
 		ArrayList<Student> smarties = new ArrayList<Student>();
 		for (Student s : students) {
@@ -212,41 +231,22 @@ public class StudentManager {
 		}
 	}
 
-	// public static double[] sortName(ArrayList<Student> students) {
-    //     /** 
-    //      * Selection sort, has two for loops where the inner is constantly finding the smallest value,
-    //      * then swaps the smallest value with the current before moving on to the next.
-    //      */
-    //     for (int i = 0; i < students.size(); i++) {
-    //         int min = i;
-    //         for (int j = i; j < students.size(); j++) {
-    //             //if(students.get(min).getFirst() > values[j]) {
-    //                 min = j;
-    //             //}
-    //         }
-    //         double temp = values[min];
-    //         values[min] = values[i];
-    //         values[i] = temp;
-    //     }
+	public static void sortName(ArrayList<Student> students) {
+		Comparator<Student> compare = new SortByName();
+		Collections.sort(students, compare);
+		System.out.println("Student list sorted by first name:");
+		for (Student s : students) {
+			System.out.println(s.getFirst() + " " + s.getLast());
+		}
 
-    // }
+    }
 
-    // public static double[] sortGPA(ArrayList<Student> students) {
-    //     /** 
-    //      * Selection sort, has two for loops where the inner is constantly finding the smallest value,
-    //      * then swaps the smallest value with the current before moving on to the next.
-    //      */
-    //     for (int i = 0; i < values.length; i++) {
-    //         int min = i;
-    //         for (int j = i; j < values.length; j++) {
-    //             if(values[min] > values[j]) {
-    //                 min = j;
-    //             }
-    //         }
-    //         double temp = values[min];
-    //         values[min] = values[i];
-    //         values[i] = temp;
-    //     }
-
-    // ?
+    public static void sortGPA(ArrayList<Student> students) {
+        Comparator<Student> compare = new SortByGPA();
+		Collections.sort(students, compare);
+		System.out.println("Student list sorted by GPA:");
+		for (Student s : students) {
+			System.out.println(s.getFirst() + " " + s.getLast() + " :" + s.getGPA());
+		}
+    }
 }

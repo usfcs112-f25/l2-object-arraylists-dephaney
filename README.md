@@ -13,10 +13,14 @@ java StudentManager.java
 
 No AI Use
 
+Used a w3schools tutorial to understand how to use a Comparator with .sort() for the extra credit.
+
+Link: https://www.w3schools.com/java/java_advanced_sorting.asp
+
+
 Hurdles:
 
-Formatting the main of the program so it looks nice was hard, I just had to go back and forth between compiling and running the program so the spaces and lines looked nice. For writing into the file I had to closely follow zybooks as well. 
-
+Sorting by name and sorting by GPA through the arraylist of students using a comparator was hard to debug. Formatting the main of the program so it looks nice was hard, I just had to go back and forth between compiling and running the program so the spaces and lines looked nice. For writing into the file I had to closely follow zybooks as well. 
 
 
 Checklist:
@@ -55,6 +59,6 @@ Checklist:
 	Search functionality (find student by first name and display all their information)
 	Write out the average GPA for all the students and the first and last names of all the students in the honor roll to a file (analysis.txt).
 
-- [] Display a sorted list based on the first name or the GPA (user's choice) - (2 points)
+- [X] Display a sorted list based on the first name or the GPA (user's choice) - (2 points)
 - [X] Display all the students who have a GPA greater than a user specified value - (2 points)
 
