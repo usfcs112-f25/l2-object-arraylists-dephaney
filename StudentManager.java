@@ -46,6 +46,7 @@ public class StudentManager {
 	      		} else if (choice == 2) {
 	      			System.out.println("Which house's student information would you like to view?\n (Choose: Gryffindor, Hufflepuff, Ravenclaw, Slytherin)");
 	      			System.out.print(">> ");
+	      			input.nextLine();
 	      			String house = input.nextLine();
 	      			ArrayList<Student> studentsToPrint = new ArrayList<Student>();
 	      			for (Student s : students) {
@@ -56,7 +57,6 @@ public class StudentManager {
 	      			for (Student s : studentsToPrint) {
 	      				System.out.println(s.toString());
 	      			}
-
 	      		} else if (choice == 3) {
 	      			System.out.println("Which house's averages student GPA would you like to view?\n(Choose: Gryffindor, Hufflepuff, Ravenclaw, Slytherin)");
 	      			System.out.print(">> ");
@@ -128,8 +128,7 @@ public class StudentManager {
 	      			} else if (dec.equals("gpa")) {
 	      				sortGPA(students);
 	      			}
-
-	      		}else {
+	      		} else {
 			        System.out.print("invalid input");
 			        continue;
 	      		}
@@ -231,6 +230,11 @@ public class StudentManager {
 		}
 	}
 
+	/**
+     * Sorts arraylist of students alphabetically by first name using sort method and prints out the sorted list. 
+     * 
+     * @param students An arraylist of student objects.
+     */
 	public static void sortName(ArrayList<Student> students) {
 		Comparator<Student> compare = new SortByName();
 		Collections.sort(students, compare);
@@ -238,9 +242,13 @@ public class StudentManager {
 		for (Student s : students) {
 			System.out.println(s.getFirst() + " " + s.getLast());
 		}
-
     }
 
+    /**
+     * Sorts arraylist of students from greatest to least gpa using sort method and prints out the sorted list. 
+     * 
+     * @param students An arraylist of student objects.
+     */
     public static void sortGPA(ArrayList<Student> students) {
         Comparator<Student> compare = new SortByGPA();
 		Collections.sort(students, compare);
