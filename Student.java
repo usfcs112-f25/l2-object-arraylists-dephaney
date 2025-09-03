@@ -20,6 +20,19 @@ public class Student {
 	private int hours;
 	private String house;
 
+	/**
+     * Constructs Student object.
+     * 
+     * @param id An int of the id.
+     * @param fname A String of the first name.
+     * @param lname A String of the last name.
+     * @param email A String of the email.
+     * @param major A String of the major.
+     * @param gpa A double of the gpa.
+     * @param hours An int of the credit hours.
+     * @param house A String of the house.
+     * @return Constructed Student object.
+     */
 	public Student(int id, String fname, String lname, String email, String major, double gpa, int hours, String house) throws IllegalArgumentException{
 		if (gpa >= 0.0 && gpa <= 5.0 && hours >= 0) {
 			this.id = id;
